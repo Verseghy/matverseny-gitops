@@ -28,14 +28,14 @@ terraform {
 provider "digitalocean" {
 }
 
-data "digitalocean_kubernetes_versions" "v1_33" {
-  version_prefix = "1.33."
+data "digitalocean_kubernetes_versions" "v1_34" {
+  version_prefix = "1.34."
 }
 
 resource "digitalocean_kubernetes_cluster" "cluster" {
   name = "matverseny-production"
   region  = "fra1"
-  version = data.digitalocean_kubernetes_versions.v1_33.latest_version
+  version = data.digitalocean_kubernetes_versions.v1_34.latest_version
 
   ha = var.stage == "BOOTSTRAP" ? false : true
   destroy_all_associated_resources = true
